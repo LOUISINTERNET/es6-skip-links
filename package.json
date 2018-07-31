@@ -1,0 +1,35 @@
+{
+  "name": "es6.skip-links",
+  "version": "2.4.1",
+  "description":
+    "Define dependencies between items or group them together for better event handling",
+  "main": "src/main.js",
+  "scripts": {
+    "build": "webpack -p",
+    "dev": "webpack --progress --colors --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.louis-net.de:lia/es6-skip-links.git"
+  },
+  "author": "Jan-Philipp Dombrowski <dombrowski@louis.info>",
+  "contributors": [
+    {
+      "name": "Patrick Kahl",
+      "email": "kahl@louis.info"
+    }
+  ],
+  "private": true,
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "prettier": "^1.8.2",
+    "webpack": "^2.6.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "babel-runtime": "^6.23.0"
+  }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <title></title>
+
+  <style>
+    #wrapper {
+      margin: 0 auto;
+      padding: 0;
+      width: 100%;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .is-visible {
+      display: block;
+    }
+  </style>
+
+</head>
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <a data-skip-link="nav" data-skip-breakpoint="700" data-skip-breakpoint-close href="#">Nav</a>
+      <ul>
+        <li><button id="triggerId">Trigger Target id from JS</button></li>
+        <li><button id="stop">Stop Script</button></li>
+        <li><button id="start">Start Script</button></li>
+        <li><button id="remove">Remove Script</button></li>
+        <li><button id="remove-wrapper">Remove Script from wrapper container</button></li>
+        <li><button id="init">Init Script</button></li>
+      </ul>
+    </div>
+    <div id="nav" class="hidden">
+      <ul>
+        <li><a href="#" data-skip-link="content-1" data-skip-group="nav" data-skip-state="open">Content 1</a></li>
+        <li><a href="#" data-skip-link="content-2" data-skip-group="nav">Content 2</a></li>
+        <li><a href="#" data-skip-close="nav">Close Nav</a></li>
+      </ul>
+    </div>
+    <div id="content">
+      <div id="content-1" class="hidden">
+        <h2>Contenti 1</h2>
+        <p>
+        Amet <a href="#">obcaecati</a> accusamus optio nostrum impedit hic consequuntur dolor Fugit laudantium laboriosam saepe repellat sint provident, quae Commodi rem sit autem libero autem Iste animi nihil autem dicta omnis Aperiam?
+        </p>
+      </div>
+
+      <div id="content-2" class="hidden">
+        <h2>Contenti 2</h2>
+        <p>
+          Amet obcaecati accusamus optio nostrum impedit hic consequuntur dolor Fugit laudantium laboriosam saepe repellat sint provident, quae Commodi rem sit autem libero autem Iste animi nihil autem dicta omnis Aperiam?
+        </p>
+      </div>
+    </div>
+  </div>
+  <script src="../lib/skip-links.js"></script>
+  <script>
+    document.querySelector('#triggerId').addEventListener('click', function(e) {
+      skipLinks.toggleId('nav');
+      e.preventDefault();
+      e.stopPropagation();
+    });
+
+    document.querySelector('#stop').addEventListener('click', function(e) {
+      skipLinks.stop();
+      e.preventDefault();
+      e.stopPropagation();
+    });
+
+    document.querySelector('#start').addEventListener('click', function(e) {
+      skipLinks.start();
+      e.preventDefault();
+      e.stopPropagation();
+    });
+
+    document.querySelector('#remove-wrapper').addEventListener('click', function(e) {
+      skipLinks.remove(document.querySelector('#wrapper'));
+      e.preventDefault();
+      e.stopPropagation();
+    });
+
+    document.querySelector('#remove').addEventListener('click', function(e) {
+      skipLinks.remove();
+      e.preventDefault();
+      e.stopPropagation();
+    });
+
+    document.querySelector('#init').addEventListener('click', function(e) {
+      skipLinks.reInit();
+      e.preventDefault();
+      e.stopPropagation();
+    });
+
+    document.addEventListener('skipper:stateChange', function(e) {
+      console.log(e.type + ': ', e.detail.cache);
+    });
+  </script>
+</body>
+</html>
