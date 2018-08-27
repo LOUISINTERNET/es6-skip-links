@@ -35,7 +35,7 @@ With this data attribute you can group links together. It only can be one open s
   </li>
 </ul>
 <div id="content-1">Content One</div>
-<idv id="content-2">Content Two</div>
+<div id="content-2">Content Two</div>
 ```
 
 ### data-skip-breakpoint
@@ -74,12 +74,12 @@ By default the class that whould be toggled is "is-visible". If you want your ow
 <div id="rel-container">Content</div>
 ```
 
-### data-skip-ignore-close
+### data-skip-ignore-body
 
-By default a click on every element which is not a skip link or target trigger the close event for all open skip targets. With the `data-skip-ignore-close` attribute the global close whould be ignored on this element.
+By default a click on every element which is not a skip link or target trigger the close event for all open skip targets. With the `data-skip-ignore-body` attribute the global close whould be ignored on this element.
 
 ```html
-<span data-skip-link="rel-container" data-skip-ignore-global="true">Link</span>
+<span data-skip-link="rel-container" data-skip-ignore-body="true">Link</span>
 <div id="rel-container">Content</div>
 ```
 
