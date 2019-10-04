@@ -32,16 +32,21 @@ class Skiplinks {
     let id = event.currentTarget.getAttribute(config.dataLinkAttr),
       cache = this.collection.filterById(id)
 
-    if (
-      cache === undefined ||
-      // Ignore action if breakpoint attribute is set and is also true
-      (cache.breakpoint !== undefined && window.innerWidth < cache.breakpoint)
-    ) {
-      return
-    }
+    if (cache === undefined) return
 
     event.preventDefault()
     event.stopPropagation()
+
+    // Ignore action if breakpoint attribute is set and is also true
+    if (cache.breakpoint !== undefined) {
+      const vpWidth = window.innerWidth
+      const breakpoint = cache.breakpoint.split(',')
+      if (
+        (breakpoint[0] > vpWidth && !breakpoint[1]) ||
+        (breakpoint[0] > vpWidth || breakpoint[1] < vpWidth)
+      )
+        return
+    }
 
     if (cache !== undefined) {
       this.toggleTarget(cache)
@@ -203,7 +208,4 @@ class Skiplinks {
   }
 }
 
-// init skiplinks
-let skipLinks = new Skiplinks()
-if (window) window.skipLinks = skipLinks
-export default skipLinks
+export default new Skiplinks()

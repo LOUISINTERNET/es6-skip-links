@@ -40,10 +40,10 @@ With this data attribute you can group links together. It only can be one open s
 
 ### data-skip-breakpoint
 
-To stop the skip link functionality on a specific breakpoint you can use the `data-skip-breakpoint` attribute. In the following scenario the `data-skip-link` whould not be usable under 960px.
+To stop the skip link functionality on a specific breakpoint you can use the `data-skip-breakpoint` attribute. If you only set one number the value stands for max. If you set two values the first in min and the second max.
 
 ```html
-<span data-skip-link="rel-container" data-skip-breakpoint="960">Link</span>
+<span data-skip-link="rel-container" data-skip-breakpoint="400, 960">Link</span>
 <div id="rel-container">Content</div>
 ```
 
@@ -52,7 +52,12 @@ To stop the skip link functionality on a specific breakpoint you can use the `da
 If you want to close an open target on a specific breakpoint you can use the `data-skip-breakpoint` plus the `data-skip-breakpoint-close` attribute.
 
 ```html
-<span data-skip-link="rel-container" data-skip-breakpoint="960" data-skip-breakpoint-close>Link</span>
+<span
+  data-skip-link="rel-container"
+  data-skip-breakpoint="960"
+  data-skip-breakpoint-close
+  >Link</span
+>
 <div id="rel-container">Content</div>
 ```
 
@@ -70,7 +75,9 @@ With the value open this data attribute trigger the skip link just on load so th
 By default the class that whould be toggled is "is-visible". If you want your own class that whould be toggled add the `data-skip-class`attribute
 
 ```html
-<span data-skip-link="rel-container" data-skip-class="my-is-visible-class">Link</span>
+<span data-skip-link="rel-container" data-skip-class="my-is-visible-class"
+  >Link</span
+>
 <div id="rel-container">Content</div>
 ```
 
@@ -91,6 +98,5 @@ With the `skipper:stateChange` you can add own logic to changes of each skip-lin
 
 ```html
 document.addEventListener('skipper:stateChange', (e) => {
-  console.log(`${e.type}: `, e.detail.cache);
-});
+console.log(`${e.type}: `, e.detail.cache); });
 ```

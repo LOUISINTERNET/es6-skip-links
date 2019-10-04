@@ -1,8 +1,8 @@
 {
   "name": "es6.skip-links",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "description": "Define dependencies between items or group them together for better event handling",
-  "main": "src/main.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "webpack -p",
     "dev": "webpack --progress --colors --watch --mode=development"

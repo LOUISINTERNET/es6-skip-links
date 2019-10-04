@@ -3,7 +3,7 @@ var webpack = require('webpack')
 
 module.exports = {
   mode: 'production',
-  entry: ['./src/main.js'],
+  entry: ['./src/index.js'],
   output: {
     path: path.resolve(__dirname, 'lib'),
     filename: 'skip-links.js',

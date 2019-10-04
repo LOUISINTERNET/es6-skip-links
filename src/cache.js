@@ -7,7 +7,7 @@ class Cache {
     let state = document.querySelectorAll(
       `[${config.dataGroupAttr}="${
         dataset[hyphenToCamelCase(config.dataGroupAttr)]
-      }"][${config.dataStateAttr}]`,
+      }"][${config.dataStateAttr}]`
     )
 
     this.id = id

@@ -32,7 +32,7 @@ export default (function() {
         event,
         params.bubbles,
         params.cancelable,
-        params.detail,
+        params.detail
       )
       return evt
     }

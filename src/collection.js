@@ -105,18 +105,27 @@ class Collection {
         const vpWidth = window.innerWidth
 
         Array.from(this.collection)
-          .filter(
-            cache =>
-              cache[1].breakpointClose &&
-              cache[1].state === OPEN &&
-              cache[1].breakpoint > vpWidth,
-          )
+          .filter(arr => {
+            const cache = arr[1]
+            if (
+              !cache.breakpointClose ||
+              cache.state !== OPEN ||
+              !cache.breakpoint
+            )
+              return false
+
+            const breakpoint = cache.breakpoint.split(',')
+            return (
+              (breakpoint[0] > vpWidth && !breakpoint[1]) ||
+              (breakpoint[0] > vpWidth || breakpoint[1] < vpWidth)
+            )
+          })
           .forEach(cache => {
             this.toggleCaches(cache[1])
           })
       },
       250,
-      this,
+      this
     )
 
     window.addEventListener('resize', this.resizeEvent)
