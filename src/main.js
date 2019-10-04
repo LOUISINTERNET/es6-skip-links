@@ -108,7 +108,7 @@ class Skiplinks {
       .filterByKey([{ key: 'state', value: 'open' }])
       .forEach(cache => {
         const close = cache.target.querySelector(
-          `[${config.dataCloseAttr}="${cache.target.id}"]`,
+          `[${config.dataCloseAttr}="${cache.target.id}"]`
         )
         if (close) close.click()
       })
@@ -142,7 +142,7 @@ class Skiplinks {
             value: OPEN,
           },
         ],
-        cache.id,
+        cache.id
       )
 
       if (groupSibling.length) {
@@ -206,4 +206,4 @@ class Skiplinks {
 // init skiplinks
 let skipLinks = new Skiplinks()
 if (window) window.skipLinks = skipLinks
-module.exports = skipLinks
+export default skipLinks

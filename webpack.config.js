@@ -1,26 +1,28 @@
-var path = require('path');
-var webpack = require('webpack');
+var path = require('path')
+var webpack = require('webpack')
 
 module.exports = {
-  entry: [
-    './src/main.js'
-  ],
+  mode: 'production',
+  entry: ['./src/main.js'],
   output: {
-    filename: './lib/skip-links.js',
+    path: path.resolve(__dirname, 'lib'),
+    filename: 'skip-links.js',
     library: 'skipLinks',
-    libraryTarget: 'var'
+    libraryTarget: 'var',
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.js$/,
-        include: path.join(__dirname, 'src'),
-        loader: 'babel-loader',
-        query: {
-          plugins: ['transform-runtime'],
-          presets: ['es2015']
-        }
-      }
-    ]
-  }
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            babelrc: false,
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+    ],
+  },
 }
