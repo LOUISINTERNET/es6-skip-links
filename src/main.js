@@ -34,9 +34,6 @@ class Skiplinks {
 
     if (cache === undefined) return
 
-    event.preventDefault()
-    event.stopPropagation()
-
     // Ignore action if breakpoint attribute is set and is also true
     if (cache.breakpoint !== undefined) {
       const vpWidth = window.innerWidth
@@ -47,6 +44,9 @@ class Skiplinks {
       )
         return
     }
+
+    event.preventDefault()
+    event.stopPropagation()
 
     if (cache !== undefined) {
       this.toggleTarget(cache)
