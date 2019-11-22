@@ -1,6 +1,6 @@
 {
   "name": "es6.skip-links",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "description": "Define dependencies between items or group them together for better event handling",
   "main": "src/index.js",
   "scripts": {
