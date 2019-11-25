@@ -21,7 +21,7 @@ const config = {
   smartClose: true,
   wrapper: document.querySelector('html'),
 
-  version: '2.4.4',
+  version: '2.4.5',
   isActive: true,
 }
 
