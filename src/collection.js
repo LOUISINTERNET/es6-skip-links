@@ -1,6 +1,6 @@
 import { OPEN, config } from './config.js'
 import Cache from './cache.js'
-import { throttle } from './helper.js'
+import _throttle from 'lodash.throttle'
 
 class Collection {
   constructor(Skiplinks, links) {
@@ -96,7 +96,7 @@ class Collection {
 
     document.addEventListener('keydown', this.Skiplinks.handleEsc)
 
-    this.resizeEvent = throttle(
+    this.resizeEvent = _throttle(
       e => {
         if (!config.isActive) {
           return
@@ -124,8 +124,7 @@ class Collection {
             this.toggleCaches(cache[1])
           })
       },
-      250,
-      this
+      250
     )
 
     window.addEventListener('resize', this.resizeEvent)
