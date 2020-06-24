@@ -21,7 +21,9 @@ class Skiplinks {
   }
 
   bindToContext(context, ...methods) {
-    methods.forEach(method => (context[method] = context[method].bind(context)))
+    methods.forEach(
+      (method) => (context[method] = context[method].bind(context))
+    )
   }
 
   handleClick(event) {
@@ -40,7 +42,8 @@ class Skiplinks {
       const breakpoint = cache.breakpoint.split(',')
       if (
         (breakpoint[0] > vpWidth && !breakpoint[1]) ||
-        (breakpoint[0] > vpWidth || breakpoint[1] < vpWidth)
+        breakpoint[0] > vpWidth ||
+        breakpoint[1] < vpWidth
       )
         return
     }
@@ -111,7 +114,7 @@ class Skiplinks {
 
     const activeLinks = this.collection
       .filterByKey([{ key: 'state', value: 'open' }])
-      .forEach(cache => {
+      .forEach((cache) => {
         const close = cache.target.querySelector(
           `[${config.dataCloseAttr}="${cache.target.id}"]`
         )

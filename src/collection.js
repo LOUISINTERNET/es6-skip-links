@@ -11,7 +11,7 @@ class Collection {
   }
 
   createItems(links) {
-    links.forEach(link => {
+    links.forEach((link) => {
       let id = link.getAttribute(config.dataLinkAttr),
         target = document.querySelector(`#${id}`)
 
@@ -39,13 +39,13 @@ class Collection {
 
   filterByKey(keyValuePairs, exceptId) {
     let cachedElems = []
-    this.collection.forEach(cache => {
+    this.collection.forEach((cache) => {
       if (cache.id === exceptId) {
         return true
       }
 
       let fit = true
-      keyValuePairs.forEach(pair => {
+      keyValuePairs.forEach((pair) => {
         if (cache[pair.key] !== pair.value) {
           fit = false
         }
@@ -64,7 +64,7 @@ class Collection {
       return
     }
 
-    caches.forEach(cache => {
+    caches.forEach((cache) => {
       // Toggle state and classes
       cache.toggleState().toggleClasses()
 
@@ -82,13 +82,13 @@ class Collection {
         key: 'initState',
         value: 'open',
       },
-    ]).forEach(elem => {
+    ]).forEach((elem) => {
       elem.link.click()
     })
   }
 
   addEvents() {
-    this.links.forEach(link => {
+    this.links.forEach((link) => {
       link.addEventListener('click', this.Skiplinks.handleClick)
     })
 
@@ -96,36 +96,34 @@ class Collection {
 
     document.addEventListener('keydown', this.Skiplinks.handleEsc)
 
-    this.resizeEvent = _throttle(
-      e => {
-        if (!config.isActive) {
-          return
-        }
+    this.resizeEvent = _throttle((e) => {
+      if (!config.isActive) {
+        return
+      }
 
-        const vpWidth = window.innerWidth
+      const vpWidth = window.innerWidth
 
-        Array.from(this.collection)
-          .filter(arr => {
-            const cache = arr[1]
-            if (
-              !cache.breakpointClose ||
-              cache.state !== OPEN ||
-              !cache.breakpoint
-            )
-              return false
+      Array.from(this.collection)
+        .filter((arr) => {
+          const cache = arr[1]
+          if (
+            !cache.breakpointClose ||
+            cache.state !== OPEN ||
+            !cache.breakpoint
+          )
+            return false
 
-            const breakpoint = cache.breakpoint.split(',')
-            return (
-              (breakpoint[0] > vpWidth && !breakpoint[1]) ||
-              (breakpoint[0] > vpWidth || breakpoint[1] < vpWidth)
-            )
-          })
-          .forEach(cache => {
-            this.toggleCaches(cache[1])
-          })
-      },
-      250
-    )
+          const breakpoint = cache.breakpoint.split(',')
+          return (
+            (breakpoint[0] > vpWidth && !breakpoint[1]) ||
+            breakpoint[0] > vpWidth ||
+            breakpoint[1] < vpWidth
+          )
+        })
+        .forEach((cache) => {
+          this.toggleCaches(cache[1])
+        })
+    }, 250)
 
     window.addEventListener('resize', this.resizeEvent)
   }
@@ -133,7 +131,7 @@ class Collection {
   removeEvents(cache = undefined) {
     //Remove all events
     if (cache === undefined) {
-      this.links.forEach(link => {
+      this.links.forEach((link) => {
         link.removeEventListener('click', this.Skiplinks.handleClick)
       })
 
