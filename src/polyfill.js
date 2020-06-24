@@ -1,10 +1,10 @@
-export default (function() {
+export default (function () {
   /**
    * Closest polyfill
    * source: https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
    */
   if (window.Element && !Element.prototype.closest) {
-    Element.prototype.closest = function(s) {
+    Element.prototype.closest = function (s) {
       var matches = (this.document || this.ownerDocument).querySelectorAll(s),
         i,
         el = this
@@ -47,7 +47,7 @@ export default (function() {
    * https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach
    */
   if (window.NodeList && !NodeList.prototype.forEach) {
-    NodeList.prototype.forEach = function(callback, argument) {
+    NodeList.prototype.forEach = function (callback, argument) {
       argument = argument || window
       for (var i = 0; i < this.length; i++) {
         callback.call(argument, this[i], i, this)
