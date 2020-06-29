@@ -21,7 +21,7 @@ export default (function () {
    * source: https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent
    */
   if (typeof window.CustomEvent !== 'function') {
-    function CustomEvent(event, params) {
+    const CustomEvent = function (event, params) {
       params = params || {
         bubbles: false,
         cancelable: false,
