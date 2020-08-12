@@ -1,6 +1,6 @@
 import { OPEN, config } from './config.js'
 import Cache from './cache.js'
-import _throttle from 'lodash.throttle'
+import _throttle from 'lodash/throttle'
 
 class Collection {
   constructor(Skiplinks, links) {
